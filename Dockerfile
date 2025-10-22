@@ -24,7 +24,7 @@ COPY            . .
 
 FROM            node:20-alpine AS runner
 
-ENV             PORT=8080
+ENV             PORT=8081
 
 WORKDIR         /app
 
@@ -34,7 +34,7 @@ COPY            --from=deps /app/node_modules  ./node_modules
 
 COPY            --chown=appuser:appgroup  --from=build /app ./
 
-EXPOSE          8080
+EXPOSE          8081
 
 HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f http:localhost:8080/health || exit 1
